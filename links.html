@@ -164,7 +164,36 @@ background-color: Transparent;
 border: 1px solid #FFFFFF;
 " class="btn links-page-blc__btn">Отправить запрос</button>
 							</form>
+							<div id="leadSent" class="links-page-blc__txt"></div>
 						</div>
+
+
+
+						<div class="links-page-btn-pic">
+							<center><img src="https://scontent-arn2-1.cdninstagram.com/v/t51.2885-15/e35/20688603_492714684441998_4756378613316583424_n.jpg?_nc_ht=scontent-arn2-1.cdninstagram.com&_nc_cat=102&oh=9bd9539a9066adf50c2daf284e6348a0&oe=5E682328" alt="">
+							</img></center>
+						</div>
+
+
+
+
+
+						<a href="http://taplink.cc/lolitadollores" class="links-page-btn " style="
+border: 1px solid #FFFFFF;
+background-color: Transparent;
+--elems-color: ;
+--elems-hover: ;
+color: #FFFFFF;
+" 
+						target="_blank"
+>
+
+							<strong>
+								Сайт
+							</strong>
+						</a>
+
+
 					</div>
 
 					<div class="links-page-soc">
@@ -219,6 +248,17 @@ $(document).ready(function(){
                 contentType: 'application/json',
 		data : form_data
 	}).done(function(response){
+	    var email = response.email;
+		if (email) {
+	        $("#leadSent").text("Ваш запрос отправлен на " + email);
+		} else {
+	        $("#leadSent").text("Ваш запрос отправлен");
+		}
+
+		var input = form.find('input');
+		input.attr('readonly', true);
+        input.attr("disabled", true);
+		form.find('button').attr("disabled", true);
 	}).fail(function(){
 	});
 
